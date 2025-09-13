@@ -32,7 +32,8 @@ public class Transaction {
     private LocalDateTime timestamp;
 
     @Column(nullable = false)
-    private String description;
+    @Builder.Default
+    private String description = "Transfer between cards";
 
     @PrePersist
     public void prePersist(){

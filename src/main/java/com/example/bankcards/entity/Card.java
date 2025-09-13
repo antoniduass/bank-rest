@@ -35,7 +35,8 @@ public class Card {
     private CardStatus status;
 
     @Column(nullable = false)
-    private BigDecimal balance;
+    @Builder.Default
+    private BigDecimal balance = BigDecimal.ZERO;
 
     @OneToMany(
             mappedBy = "fromCard",

@@ -31,7 +31,12 @@ public class CardStatusChangeRequest {
     private CardStatus currentStatus;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "requested_status", nullable = false)
+    private CardStatus requestedStatus;
+
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @Builder.Default
     private RequestStatus status = RequestStatus.PENDING;
 
     @Column(name = "created_at")
