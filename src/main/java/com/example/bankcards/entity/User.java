@@ -1,11 +1,10 @@
 package com.example.bankcards.entity;
 
+import com.example.bankcards.entity.enums.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +12,7 @@ import java.util.List;
 @Table(name = "users")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 public class User {
     @Id
@@ -30,13 +29,27 @@ public class User {
     @Column
     private Role role;
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @OneToMany(
+            mappedBy = "owner",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true)
     @Builder.Default
     private List<Card> cards = new ArrayList<>();
 
-    public User(String username, String password, Role role) {
-        this.username = username;
-        this.password = password;
-        this.role = role;
+    @OneToMany(
+            mappedBy = "requestedBy",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true)
+    @Builder.Default
+    private List<CardStatusChangeRequest> statusChangeRequests = new ArrayList<>();
+
+    @PrePersist
+    public void prePersist(){
+        createdAt = LocalDateTime.now();
     }
 }

@@ -1,19 +1,19 @@
 package com.example.bankcards.entity;
 
+import com.example.bankcards.entity.enums.CardStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "cards")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 public class Card {
     @Id
@@ -36,4 +36,28 @@ public class Card {
 
     @Column(nullable = false)
     private BigDecimal balance;
+
+    @OneToMany(
+            mappedBy = "fromCard",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true)
+    @Builder.Default
+    private List<Transaction> outgoingTransactions = new ArrayList<>();
+
+    @OneToMany(
+            mappedBy = "toCard",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true)
+    @Builder.Default
+    private List<Transaction> incomingTransactions = new ArrayList<>();
+
+    @OneToMany(
+            mappedBy = "card",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true)
+    @Builder.Default
+    private List<CardStatusChangeRequest> statusChangeRequests = new ArrayList<>();
 }
