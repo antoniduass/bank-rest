@@ -29,5 +29,5 @@ public class CreateCardRequest{
     @Schema(description = "Initial balance", example = "0.00")
     @DecimalMin(value = "0.00", message = "Initial balance cannot be negative")
     @Digits(integer = 12, fraction = 2, message = "Invalid amount format")
-    private BigDecimal InitialBalance = BigDecimal.ZERO;
+    private BigDecimal initialBalance = BigDecimal.ZERO;
 }
