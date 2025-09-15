@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "API error response")
-public class ApiErrorResponse {
+public class ApiErrorResponse{
     @Schema(description = "Error message", example = "Card not found")
     private String message;
 

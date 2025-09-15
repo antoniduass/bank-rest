@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "User information")
-public class UserResponse {
+public class UserResponse{
     @Schema(description = "User ID", example = "1")
     private Long userId;
 

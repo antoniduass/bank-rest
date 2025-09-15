@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "Card information")
-public class CardResponse {
+public class CardResponse{
     @Schema(description = "Card ID", example = "1")
     private Long id;
 

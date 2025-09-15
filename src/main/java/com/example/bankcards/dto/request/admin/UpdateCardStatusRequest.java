@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "Directs card status update (admin only)")
-public class UpdateCardStatusRequest {
+public class UpdateCardStatusRequest{
     @Schema(description = "Card ID", example = "1")
     @NotNull(message = "Card ID is required")
     private Long cardId;

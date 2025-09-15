@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "Successful login response")
-public class LoginResponse {
+public class LoginResponse{
     @Schema(description = "JWT access token")
     private String token;
 

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "Approve or reject status change request")
-public class ApproveStatusChangeRequest {
+public class ApproveStatusChangeRequest{
     @Schema(description = "Status change request ID", example = "1")
     @NotNull(message = "Request ID is required")
     private Long requestId;

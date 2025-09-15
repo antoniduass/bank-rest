@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "Request card status change")
-public class RequestCardStatusChangeRequest {
+public class RequestCardStatusChangeRequest{
     @Schema(description = "Card ID to change status", example = "1")
     @NotNull(message = "Card ID is required")
     private Long cardId;

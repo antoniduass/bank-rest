@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "Transfer money between own cards")
-public class TransferRequest {
+public class TransferRequest{
     @Schema(description = "Source card ID", example = "1")
     @NotNull(message = "Source card ID is required")
     private Long fromCard;

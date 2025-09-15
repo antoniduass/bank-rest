@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "Login credentials")
-public class LoginRequest {
+public class LoginRequest{
     @Schema(description = "Username", example = "dillan_doe")
     @NotBlank(message = "Username is required")
     @Size(min = 3, max = 50, message = "Username must be 3-50 characters")

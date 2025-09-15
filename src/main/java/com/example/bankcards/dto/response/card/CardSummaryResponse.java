@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "Card summary information")
-public class CardSummaryResponse {
+public class CardSummaryResponse{
     @Schema(description = "Card ID", example = "1")
     private Long id;
 

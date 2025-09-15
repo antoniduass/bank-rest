@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "Create new card request (admin only)")
-public class CreateCardRequest {
+public class CreateCardRequest{
     @Schema(description = "Owner user ID", example = "1")
     @NotNull(message = "Owner ID is required")
     private Long userId;

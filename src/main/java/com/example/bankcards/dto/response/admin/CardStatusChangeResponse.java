@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "Card status change request information")
-public class CardStatusChangeResponse {
+public class CardStatusChangeResponse{
     @Schema(description = "Request ID", example = "1")
     private Long id;
 

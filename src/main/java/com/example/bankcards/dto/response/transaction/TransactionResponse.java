@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "Transaction information")
-public class TransactionResponse {
+public class TransactionResponse{
     @Schema(description = "Transaction ID", example = "1")
     private Long id;
 

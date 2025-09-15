@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "User registration data")
-public class RegisterRequest {
+public class RegisterRequest{
     @Schema(description = "Unique username", example = "dillan_doe")
     @NotBlank(message = "Username is required")
     @Size(min = 3, max = 50, message = "Username must be 3-50 characters")
