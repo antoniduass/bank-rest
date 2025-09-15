@@ -9,13 +9,16 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "card_status_change_requests")
-@Data
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@ToString(exclude = {"card", "requestedBy", "resolvedBy"})
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Builder
 public class CardStatusChangeRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

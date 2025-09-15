@@ -11,16 +11,20 @@ import java.util.List;
 
 @Entity
 @Table(name = "cards")
-@Data
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
+@ToString(exclude = {"owner", "outgoingTransactions", "incomingTransactions", "statusChangeRequests"})
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
 
     @Column(name = "number", nullable = false)
+    @EqualsAndHashCode.Include
     private String number;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -34,7 +38,7 @@ public class Card {
     @Column(nullable = false)
     private CardStatus status;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 12, scale = 2)
     @Builder.Default
     private BigDecimal balance = BigDecimal.ZERO;
 
