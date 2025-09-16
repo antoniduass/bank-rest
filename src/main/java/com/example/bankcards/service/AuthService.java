@@ -8,6 +8,7 @@ import com.example.bankcards.exception.BadCredentialsException;
 import com.example.bankcards.exception.UserAlreadyExistsException;
 import com.example.bankcards.mapper.request.UserRequestMapper;
 import com.example.bankcards.repository.UserRepository;
+import com.example.bankcards.security.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class AuthService{
 
         User savedUser = userRepository.save(user);
 
-        String token = jwtService.generateToken(savedUser);
+        String token = jwtService.generateTokenFromUsername(savedUser.getUsername());
 
         return LoginResponse.builder()
                 .token(token)
@@ -51,7 +52,7 @@ public class AuthService{
             throw new BadCredentialsException();
         }
 
-        String token = jwtService.generateToken(user);
+        String token = jwtService.generateTokenFromUsername(user.getUsername());
 
         return LoginResponse.builder()
                 .token(token)
