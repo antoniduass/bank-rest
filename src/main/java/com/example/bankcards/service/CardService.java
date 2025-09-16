@@ -9,6 +9,8 @@ import com.example.bankcards.entity.CardStatusChangeRequest;
 import com.example.bankcards.entity.User;
 import com.example.bankcards.entity.enums.CardStatus;
 import com.example.bankcards.entity.enums.RequestStatus;
+import com.example.bankcards.exception.CardNotFoundException;
+import com.example.bankcards.exception.UserNotFoundException;
 import com.example.bankcards.mapper.request.CardRequestMapper;
 import com.example.bankcards.mapper.response.CardResponseMapper;
 import com.example.bankcards.repository.CardRepository;
@@ -65,7 +67,7 @@ public class CardService{
     @Transactional
     public CardStatusChangeRequest requestStatusChange(RequestCardStatusChangeRequest request, User requestedBy){
         Card card = cardRepository.findById(request.getCardId())
-                .orElseThrow(() -> CardNotFoundException(request.getCardId()));
+                .orElseThrow(() -> new CardNotFoundException(request.getCardId()));
 
         CardStatusChangeRequest statusChangeRequest = cardRequestMapper.toEntity(request);
         statusChangeRequest.setCard(card);

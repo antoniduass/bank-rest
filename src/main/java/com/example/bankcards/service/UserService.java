@@ -2,6 +2,7 @@ package com.example.bankcards.service;
 
 import com.example.bankcards.dto.response.user.UserResponse;
 import com.example.bankcards.entity.User;
+import com.example.bankcards.exception.UserNotFoundException;
 import com.example.bankcards.mapper.request.UserRequestMapper;
 import com.example.bankcards.mapper.response.UserResponseMapper;
 import com.example.bankcards.repository.UserRepository;
