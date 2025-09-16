@@ -13,4 +13,7 @@ import java.time.LocalDateTime;
 public interface TransactionRepository extends JpaRepository<Transaction, Long>{
     Page<Transaction> findByFromCardOwner(User owner, Pageable pageable);
     Page<Transaction> findByFromCardOwnerAndCreatedAtBetween(User owner, LocalDateTime from, LocalDateTime to, Pageable pageable);
+
+    Page<Transaction> findByFromCardIdOrToCardId(Long fromCardId, Long toCardId, Pageable pageable);
+    Page<Transaction> findByUserId(Long userId, Pageable pageable);
 }

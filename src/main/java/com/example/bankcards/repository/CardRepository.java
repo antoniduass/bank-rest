@@ -19,7 +19,8 @@ public interface CardRepository extends JpaRepository<Card, Long>{
     List<Card> findByOwnerAndStatus(User owner, CardStatus status);
 
     Optional<Card> findByEncryptedNumber(String encryptNumber);
-    Optional<Card> findByIdAndOwner(Long id, User owner);
+    Optional<Card> findByIdAndOwner(Long cardId, User owner);
+    Optional<Card> findByIdAndOwnerId(Long cardId, Long userId);
 
     Page<Card> findByStatus(CardStatus status, Pageable pageable);
     Page<Card> findAll(Pageable pageable);
